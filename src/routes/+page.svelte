@@ -2,58 +2,66 @@
 	import Counter from './Counter.svelte';
 	import welcome from '$lib/images/svelte-welcome.webp';
 	import welcome_fallback from '$lib/images/svelte-welcome.png';
+	import Banane from "./banane.jpg"
 </script>
 
-<svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
-</svelte:head>
+<div class="standard-wrapper">
+	<h1 class="bananenliste">Hallo</h1>
+	<p>Lorem ipsum </p>
+	<a href="https://www.rewe.de/produkte/rewe-beste-wahl-banane-ca-200g/1028378/?ecid=pla_google_vs_nonbr_pm%7Cem-rewebestewahl_obst-gem%C3%BCse_lia_1879499994_71811829322_pid%3A1028378_ch%3Alocal_nn_d%3Ac&marketCode=440486">Rewe Banane</a>
+	<ol class="bananenliste">
+		<li>Banane</li>
+		<li>Banane</li>
+		<li>Banane</li>
+		<li>Banane</li>
+	</ol>
+	<ul class="bananenliste">
+		<li>Banane</li>
+		<li>Banane</li>
+		<li id="extraitem">Banane</li>
+		<li>Banane</li>
+	</ul>
+	<ul>
+		<li>Äpfel</li>
+		<li>Äpfel</li>
+		<li>Äpfel</li>
+		<li>Äpfel</li>
+	</ul>
+	<h2>Heading</h2>
+	<img src={Banane}/>
+	<ul>
+		<li><a href="/">Home<a/></li>
+		<li><a href="/anzeigen">Anzeigen</a></li>
+		<li><a href="/projekte">Projekte</a></li>
+	</ul>
 
-<section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcome_fallback} alt="Welcome" />
-			</picture>
-		</span>
-
-		to your new<br />SvelteKit app
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
-
-	<Counter />
-</section>
+	<form action="?/createRecipe" method="POST">
+		<label>
+			Rezeptname
+			<input name="Rezeptname" placeholder="Nudeln mit Pesto" type="text"/>
+		</label>
+		<label>
+			Password
+			<input name="Password" placeholder="Nudeln mit Pesto" type="password"/>
+		</label>
+		<input type="submit"/>
+	</form>
+</div>
 
 <style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 0.6;
+	img {
+		width: 200px;
+	}
+	.bananenliste {
+		color: yellow;
+		background-color: brown;
+		padding: 30px;
+	}
+	#extraitem {
+		color: brown;
 	}
 
-	h1 {
-		width: 100%;
-	}
-
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
+	.standard-wrapper {
+		margin: 40px
 	}
 </style>
