@@ -14,6 +14,7 @@ export const load = async ({ locals: {getSession} }) => {
   }
   else {
     console.log("not logged in")
+    loggedin = false
   }
   console.log("success");
   return {loggedin};

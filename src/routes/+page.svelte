@@ -49,19 +49,78 @@
 </div>
 
 <style>
+	body {
+		background-color: white;
+		color: black;
+		font-family: Arial, sans-serif;
+	}
+
 	img {
 		width: 200px;
+		border-radius: 10px;
 	}
+
 	.bananenliste {
-		color: yellow;
-		background-color: brown;
+		color: black;
+		background-color: white;
 		padding: 30px;
+		border: 2px solid #000000;
+		list-style-type: none;
 	}
+
 	#extraitem {
-		color: brown;
+		color: blue;
+		font-weight: bold;
 	}
 
 	.standard-wrapper {
-		margin: 40px
+		margin: 40px;
+		background-color: white;
+		padding: 20px;
+		border-radius: 10px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	}
+
+	h1, h2 {
+		color: black;
+	}
+
+	p, li {
+		color: black;
+	}
+
+	a {
+		color: blue;
+		text-decoration: none;
+	}
+
+	a:hover {
+		color: black;
+		text-decoration: underline;
+	}
+
+	form {
+		color: black;
+	}
+
+	input[type="submit"] {
+		background-color: blue;
+		color: white;
+		border: none;
+		padding: 10px 20px;
+		text-decoration: none;
+		margin: 4px 2px;
+		cursor: pointer;
+		border-radius: 5px;
+	}
+
+	input[type="submit"]:hover {
+		background-color: black;
+	}
+
+	input[type="text"], input[type="password"] {
+		border: 2px solid black;
+		border-radius: 5px;
+		padding: 5px;
 	}
 </style>
