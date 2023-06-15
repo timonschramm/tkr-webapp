@@ -5,8 +5,13 @@
 import { createClient } from '@supabase/supabase-js';
 import { PUBLIC_SUPABASE_ANON_KEY, PUBLIC_SUPABASE_URL } from '$env/static/public';
 const supabase = createClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY);
-
+export const load = async () => {
+    console.log("register")
+}
 export const actions = {
+    login: async ({ request }) => {
+        
+    },
     register: async ({ request }) => {
         console.log("register wurde aufgerufen!")
         //console.log(PUBLIC_SUPABASE_ANON_KEY)

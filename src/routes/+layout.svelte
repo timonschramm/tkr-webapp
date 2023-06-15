@@ -1,7 +1,9 @@
-<script>
+<script lang="ts">
 	import Header from './Header.svelte';
 	import './styles.css';
 	console.log(Math.random())
+	import type { PageData } from './$types';
+	export let data: PageData;
 </script>
 
 <div>
@@ -12,6 +14,11 @@
 			<li><a href="/projekte">Projekte</a></li>
 		</ul>
 	</nav>
+	{#if data.loggedin}
+	 	<h3> eingeloggt </h3>
+	{:else}
+		<h3> nicht eingeloggt </h3>
+	{/if}
 </div>
 <slot/>
 <style>
