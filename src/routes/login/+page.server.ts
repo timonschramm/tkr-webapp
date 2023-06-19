@@ -3,9 +3,17 @@ import type { Actions, PageServerLoad } from './$types';
 import { AuthApiError,createClient  } from "@supabase/supabase-js";
 import { PUBLIC_SUPABASE_ANON_KEY, PUBLIC_SUPABASE_URL } from '$env/static/public';
 
-export const load = (async ({ locals: { supabase, getSession } }) => {
-  
-});
+export const load = async ({ locals: { supabase, getSession } }) => {
+    const session = await getSession();
+
+    if (session) {
+        throw redirect(303, "/");
+    }
+    else {
+        console.log("Du bist hier richtig")
+    }
+    
+}
 
 export const actions = {
 	login: async ({ request, locals: {supabase, getSession}, url }) => {
@@ -18,16 +26,5 @@ export const actions = {
         
         console.log("data", loginData)
 
-		if (err) {
-			if (err instanceof AuthApiError && err.status === 400) {
-				console.log("Invalid credentials")
-				return fail(400, {
-					error: "Leider sind deine Zugangsdaten falsch. Bitte überprüfe diese noch einmal.",
-				})
-			}
-			return fail(500, {
-				message: "Server error. Try again later.",
-			})
-		}
     }
 }

@@ -1,7 +1,16 @@
-import { createClient } from '@supabase/supabase-js';
-import { PUBLIC_SUPABASE_ANON_KEY, PUBLIC_SUPABASE_URL } from '$env/static/public';
-const supabase = createClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY);
-export const load = async () => {
+import { redirect } from '@sveltejs/kit';
+
+export const load = async ({ locals: { supabase, getSession}}) => {
+
+    var loggedin = 0;
+    const session = await getSession()
+    if (session) {
+        loggedin = 1;
+    }
+    else {
+        loggedin = 0;
+    }
+
     const {data:postDaten, error} = await supabase
     .from('ebay_posts')
     .select('id, titel, preis')
@@ -10,10 +19,10 @@ export const load = async () => {
     }
     console.log(postDaten)
     console.log("success")
-    return {postDaten}
+    return {postDaten, loggedin}
 }
 export const actions = {
-    createPost : async ({request}) => {
+    createPost : async ({request, locals: {supabase}}) => {
         console.log("erreicht")
         const body = Object.fromEntries(await request.formData())
         const {error} = await supabase
